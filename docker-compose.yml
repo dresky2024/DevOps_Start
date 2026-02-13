@@ -1,0 +1,15 @@
+services:
+  web-server:
+    build: .
+    ports:
+      - "8080:80"
+
+  database:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - db_data:/var/lib/postgresql/data  # Мапим папку внутри БД на именованный том
+
+volumes:
+  db_data: 
